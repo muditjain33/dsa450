@@ -1,0 +1,28 @@
+vector<int> spirallyTraverse(vector<vector<int> > a, int r, int c) 
+    {
+        
+        vector<int> l;
+        int i=0,j=0;
+        while(i<r and j<c){
+            for(int q=j;q<c;q++){
+                l.push_back(a[i][q]);
+            }
+            i++;
+            for(int q=i;q<r;q++){
+                l.push_back(a[q][c-1]);
+            }
+            c--;
+            if(i>=r or j>=c){
+                break;
+            }
+            for(int q=c-1;q>=j;q--){
+                l.push_back(a[r-1][q]);
+            }
+            r--;
+            for(int q=r-1;q>=i;q--){
+                l.push_back(a[q][j]);
+            }
+            j++;
+        }
+        return l;
+    }
