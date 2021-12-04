@@ -1,0 +1,21 @@
+vector<int> singleNumber(vector<int> nums) 
+    {
+        int xors=0;
+        for (auto& it : nums) {
+            xors=xors^it;
+        }
+        int copy=xors;
+        int k=(int)log2(xors);
+        int xe=0;
+        for (auto& it : nums) {
+            if(((it>>(k))&1)==1){
+                xe=xe^it;
+            }
+        }
+        int xr=xe;
+        for (auto& it : nums) {
+            xr=xr^it;
+        }
+        vector<int> ve={xr,xe};
+        return ve;
+    }
